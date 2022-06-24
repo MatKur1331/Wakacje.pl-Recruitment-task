@@ -1,5 +1,4 @@
 <?php
-
 function printList($limit,$array,$type){
     $array = array_count_values($array);
     arsort($array);
@@ -9,18 +8,18 @@ function printList($limit,$array,$type){
     {
             if($limit>0)
             {
-                echo "<li>$key $val wystąpień</li>";
+                echo "<li>$key: $val wystąpień</li>";
                 $limit--;
             }
             else break;
     }
     echo "</ol>";
 }
-
+//read data
 $file = file('php_internship_data.csv');
 $names = array();
 $dates = array();
-//split dates and names
+//split dates and names and prepare the data
     foreach($file as $line)
     {
         $line = trim($line);
@@ -33,6 +32,7 @@ $dates = array();
             array_push($dates,$row[1]);
         }
     }
+    //show data
     printList(10,$names,'imiona');
     printList(10,$dates,'daty');
 
